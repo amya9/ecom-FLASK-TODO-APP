@@ -1,0 +1,34 @@
+.flex_row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: flex-start;
+}
+.article {
+    box-sizing: border-box;
+    flex: 1 1 50%;
+    align-self: stretch;
+    padding: 10px;
+}
+.content {
+    box-sizing: border-box;
+    flex: 1 1 auto;
+    align-self: stretch;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+.innercontent {
+    flex: 1 1 auto;
+    align-self: stretch;
+    color: green;
+}
+.buttonBar {
+    flex: 0 0 auto;
+}
+.onRight {
+    text-align: left;
+}

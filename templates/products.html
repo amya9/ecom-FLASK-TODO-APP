@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}
+    All Products
+{% endblock title %}
+{% block body %}
+
+   <div class="container my-3">
+       <h2>Add Products</h2>
+       <hr style="border-top: 2px solid #200101;"/>
+    <form action="/products" method="POST">
+        <div class="mb-3">
+          <label for="exampleInputProductName" class="form-label">Product Name</label>
+          <input type="text" class="form-control" id="exampleInputProductName" name="productName" placeholder="Name">
+          <div id="productNameHelp" class="form-text">Enter short but descriptive product name</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputProductDescription" class="form-label">Product Description</label>
+            <textarea class="form-control" id="exampleInputProductDescription" rows="3" name="productDesc" placeholder="Description"></textarea>
+            <div id="productDescriptionHelp" class="form-text">Enter  product description</div>
+         </div>
+          
+        <div class="mb-3">
+            <label for="exampleInputProductPrice" class="form-label">Product Price(Rs.)</label>
+            <input type="number" class="form-control" id="exampleInputProductPrice" name="productPrice" placeholder="Price(Rs.)" >
+            <div id="productPriceHelp" class="form-text">Enter  product Price</div>
+          </div>
+        
+
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+      <h2 class="my-3">Product Lists</h2>
+      <hr  style="border-top: 2px solid #ff0000;"/>
+     
+      <div class="table-responsive">
+      <table class="table table-striped table-hover align-middle ">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Product-Id</th>
+            <th scope="col">Product-Name</th>
+            <th scope="col">Product-Description</th>
+            <th scope="col">Product-Price</th>
+          </tr>
+        </thead>
+        <tbody >
+            {% for product in allProducts  %}
+            <tr class="align-middle" >
+                <th scope="row" >{{ loop.index}}</th>
+                <td>{{product.productId}}</td>
+                <td class="vertical-align middle">{{product.productName}}</td>
+                <td class="align-top middle">{{product.productDescription}}</td>
+                <td>{{product.productPrice}}</td>
+                <td>
+                  <a href="/update/{{product.sno}}" type="button" class="btn btn-primary btn-sm mx-1">Update</button></a>
+                  <a href="/delete/{{product.sno}}" type="button" class="btn btn-danger btn-sm mx-1">Delete</button></a>
+                </td>
+              </tr>
+            {% endfor %}
+    
+        </tbody>
+      </table>
+    </div>
+    </div>
+    
+    {% endblock body %}
